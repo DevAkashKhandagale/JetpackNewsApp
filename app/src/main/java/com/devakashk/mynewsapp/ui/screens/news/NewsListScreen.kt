@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,7 +44,7 @@ fun NewsList(data: List<NewsItem>, onItemClicked: (NewsItem) -> Unit) {
 
     LazyColumn(
         modifier = Modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.systemBars),
-        contentPadding = PaddingValues(8.dp)
+        contentPadding = PaddingValues(top = 36.dp)
     ) {
         items(data) {
             Log.d("Images", "NewsList: ${it.imageUrl}")
@@ -91,7 +92,7 @@ fun NewsCard(item: NewsItem, onItemClicked: (NewsItem) -> Unit) {
                     .padding(8.dp)
             )
             Column(verticalArrangement = Arrangement.SpaceAround, horizontalAlignment = Alignment.Start) {
-                Text(text = item.title, fontWeight = FontWeight.Bold, fontSize = 18.sp, maxLines = 1, modifier = Modifier.padding(2.dp))
+                Text(text = item.title, fontWeight = FontWeight.Bold, textDecoration = TextDecoration.Underline, fontSize = 18.sp, maxLines = 1, modifier = Modifier.padding(2.dp))
                 Text(text = item.description, modifier = Modifier.padding(2.dp), fontSize = 16.sp, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 Text(text = item.publishedDate.formattedDate(), modifier = Modifier.padding(2.dp), fontSize = 12.sp)
             }

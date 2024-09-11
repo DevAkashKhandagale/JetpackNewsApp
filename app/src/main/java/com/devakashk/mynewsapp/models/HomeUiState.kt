@@ -1,5 +1,7 @@
 package com.devakashk.mynewsapp.models
 
+import com.google.gson.Gson
+
 data class HomeUiState(
     val title: String,
     val link: String,
@@ -13,8 +15,4 @@ data class NewsItem(
     var link: String,
     var imageUrl: String,
     var publishedDate: String
-) {
-    override fun toString(): String {
-        return "NewsItem(title='$title', description='$description', imageUrl='$imageUrl')"
-    }
-}
+)

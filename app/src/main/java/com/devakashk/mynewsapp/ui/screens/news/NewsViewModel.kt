@@ -23,10 +23,12 @@ import javax.inject.Inject
 @HiltViewModel
 class NewsViewModel @Inject constructor(var apiService: NewsApi) : ViewModel() {
 
-
-
     private val _uiState = MutableStateFlow<List<NewsItem>>(emptyList())
     val uiState: StateFlow<List<NewsItem>> = _uiState
+
+    private val _selectedNewsItem= MutableStateFlow<NewsItem?>(null)
+    val selectedNewsItem: StateFlow<NewsItem?> = _selectedNewsItem
+
 
     init {
         getNews()
@@ -47,6 +49,10 @@ class NewsViewModel @Inject constructor(var apiService: NewsApi) : ViewModel() {
                 }
 
         }
+    }
+
+    fun setSelectedNews(item: NewsItem){
+        _selectedNewsItem.value = item
     }
 
 
